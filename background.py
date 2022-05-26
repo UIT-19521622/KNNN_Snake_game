@@ -42,6 +42,8 @@ class SNAKE:
 
 
 	def draw_snake(snake):
+		snake.update_head_graphics()
+		snake.update_tail_graphics()
 
 		for index,block in enumerate(snake.body):
 			x_pos = int(block.x * cell_size)
