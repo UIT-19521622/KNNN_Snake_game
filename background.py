@@ -21,6 +21,24 @@ class SNAKE:
 		snake.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
 		snake.direction = Vector2(0,0)
 		snake.new_block = False
+		
+		snake.head_up = pygame.image.load('Graphics/head_up.png').convert_alpha()
+		snake.head_down = pygame.image.load('Graphics/head_down.png').convert_alpha()
+		snake.head_right = pygame.image.load('Graphics/head_right.png').convert_alpha()
+		snake.head_left = pygame.image.load('Graphics/head_left.png').convert_alpha()
+		
+		snake.tail_up = pygame.image.load('Graphics/tail_up.png').convert_alpha()
+		snake.tail_down = pygame.image.load('Graphics/tail_down.png').convert_alpha()
+		snake.tail_right = pygame.image.load('Graphics/tail_right.png').convert_alpha()
+		snake.tail_left = pygame.image.load('Graphics/tail_left.png').convert_alpha()
+
+		snake.body_vertical = pygame.image.load('Graphics/body_vertical.png').convert_alpha()
+		snake.body_horizontal = pygame.image.load('Graphics/body_horizontal.png').convert_alpha()
+
+		snake.body_tr = pygame.image.load('Graphics/body_tr.png').convert_alpha()
+		snake.body_tl = pygame.image.load('Graphics/body_tl.png').convert_alpha()
+		snake.body_br = pygame.image.load('Graphics/body_br.png').convert_alpha()
+		snake.body_bl = pygame.image.load('Graphics/body_bl.png').convert_alpha()
 
 
 	def draw_snake(snake):
@@ -29,6 +47,8 @@ class SNAKE:
 			x_pos = int(block.x * cell_size)
 			y_pos = int(block.y * cell_size)
 			block_rect = pygame.Rect(x_pos,y_pos,cell_size,cell_size)
+			
+			
 	
 	
 
