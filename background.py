@@ -48,6 +48,41 @@ class SNAKE:
 			y_pos = int(block.y * cell_size)
 			block_rect = pygame.Rect(x_pos,y_pos,cell_size,cell_size)
 			
+			if index == 0:
+				screen.blit(snake.head,block_rect)
+			elif index == len(snake.body) - 1:
+				screen.blit(snake.tail,block_rect)
+			else:
+				previous_block = snake.body[index + 1] - block
+				next_block = snake.body[index - 1] - block
+				if previous_block.x == next_block.x:
+					screen.blit(snake.body_vertical,block_rect)
+				elif previous_block.y == next_block.y:
+					screen.blit(snake.body_horizontal,block_rect)
+				else:
+					if previous_block.x == -1 and next_block.y == -1 or previous_block.y == -1 and next_block.x == -1:
+						screen.blit(snake.body_tl,block_rect)
+					elif previous_block.x == -1 and next_block.y == 1 or previous_block.y == 1 and next_block.x == -1:
+						screen.blit(snake.body_bl,block_rect)
+					elif previous_block.x == 1 and next_block.y == -1 or previous_block.y == -1 and next_block.x == 1:
+						screen.blit(snake.body_tr,block_rect)
+					elif previous_block.x == 1 and next_block.y == 1 or previous_block.y == 1 and next_block.x == 1:
+						screen.blit(snake.body_br,block_rect)
+
+	def update_head_graphics(snake):
+		head_relation = snake.body[1] - snake.body[0]
+		if head_relation == Vector2(1,0): snake.head = snake.head_left
+		elif head_relation == Vector2(-1,0): snake.head = snake.head_right
+		elif head_relation == Vector2(0,1): snake.head = snake.head_up
+		elif head_relation == Vector2(0,-1): snake.head = snake.head_down
+
+	def update_tail_graphics(snake):
+		tail_relation = snake.body[-2] - snake.body[-1]
+		if tail_relation == Vector2(1,0): snake.tail = snake.tail_left
+		elif tail_relation == Vector2(-1,0): snake.tail = snake.tail_right
+		elif tail_relation == Vector2(0,1): snake.tail = snake.tail_up
+		elif tail_relation == Vector2(0,-1): snake.tail = snake.tail_down
+			
 			
 	
 	
