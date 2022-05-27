@@ -84,10 +84,18 @@ class SNAKE:
 		elif tail_relation == Vector2(-1,0): snake.tail = snake.tail_right
 		elif tail_relation == Vector2(0,1): snake.tail = snake.tail_up
 		elif tail_relation == Vector2(0,-1): snake.tail = snake.tail_down
+	def move_snake(snake):
+		if snake.new_block == True:
+			body_copy = snake.body[:]
+			body_copy.insert(0,body_copy[0] + snake.direction)
+			snake.body = body_copy[:]
+			snake.new_block	= False
+		else:
+			body_copy = snake.body[:-1]
+			body_copy.insert(0,body_copy[0] + snake.direction)
+			snake.body = body_copy[:]
 			
 			
-	
-	
 
 class MAIN:
 	def __init__(snake):
