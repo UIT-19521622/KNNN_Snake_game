@@ -132,7 +132,16 @@ class MAIN:
 		screen.blit(score_surface,score_rect)
 		screen.blit(apple,apple_rect)
 		pygame.draw.rect(screen,(56,74,12),bg_rect,2)
+		
+	def check_collision(snake):
+		if snake.fruit.pos == snake.snake.body[0]:
+			snake.fruit.randomize()
+			snake.snake.add_block()
+			snake.snake.play_crunch_sound()
 
+		for block in snake.snake.body[1:]:
+			if block == snake.fruit.pos:
+				snake.fruit.randomize()
 
 
 pygame.init()
