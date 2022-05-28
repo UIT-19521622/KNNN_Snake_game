@@ -95,11 +95,12 @@ class SNAKE:
 			body_copy.insert(0,body_copy[0] + snake.direction)
 			snake.body = body_copy[:]
 	def add_block(snake):
-		snake.new_block = True	
+		snake.new_block = True
+	def play_crunch_sound(snake):
+		snake.crunch_sound.play()	
 	def reset(snake):
 		snake.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
-		snake.direction = Vector2(0,0)	
-			
+		snake.direction = Vector2(0,0)
 
 class MAIN:
 	def __init__(snake):
