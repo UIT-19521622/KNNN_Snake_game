@@ -150,7 +150,9 @@ class MAIN:
 		for block in snake.snake.body[1:]:
 			if block == snake.snake.body[0]:
 				snake.game_over()
-
+				
+	def game_over(snake):
+		snake.snake.reset()
 
 pygame.init()
 cell_size=40
