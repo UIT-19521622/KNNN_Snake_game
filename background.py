@@ -106,7 +106,11 @@ class MAIN:
 	def __init__(snake):
 		snake.snake = SNAKE()
 		snake.fruit = FRUIT()
-
+		
+	def update(snake):
+		snake.snake.move_snake()
+		snake.check_collision()
+		snake.check_fail()
 
 	def draw_elements(snake):
 		snake.fruit.draw_fruit()
