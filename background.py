@@ -142,6 +142,14 @@ class MAIN:
 		for block in snake.snake.body[1:]:
 			if block == snake.fruit.pos:
 				snake.fruit.randomize()
+				
+	def check_fail(snake):
+		if not 0 <= snake.snake.body[0].x < cell_number or not 0 <= snake.snake.body[0].y < cell_number:
+			snake.game_over()
+
+		for block in snake.snake.body[1:]:
+			if block == snake.snake.body[0]:
+				snake.game_over()
 
 
 pygame.init()
