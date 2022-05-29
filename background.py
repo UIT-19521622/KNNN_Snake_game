@@ -8,14 +8,18 @@ import pygame, sys, random
 from pygame.math import Vector2
 
 class FRUIT:
-    def __init__(self) :
-        self.x=random.randint(0,cell_number-1)
-        self.y=random.randint(0,cell_number-1)
-        self.pos=Vector2(self.x,self.y)
+	def __init__(snake):
+		snake.randomize()
 
-    def draw_fruit(self):
-        fruit_rect=pygame.Rect(int(self.pos.x*cell_size),int(self.pos.y*cell_size),cell_size,cell_size)
-        screen.blit(apple,fruit_rect)
+	def draw_fruit(snake):
+		fruit_rect = pygame.Rect(int(snake.pos.x * cell_size),int(snake.pos.y * cell_size),cell_size,cell_size)
+		screen.blit(apple,fruit_rect)
+
+	def randomize(snake):
+		snake.x = random.randint(0,cell_number - 1)
+		snake.y = random.randint(0,cell_number - 1)
+		snake.pos = Vector2(snake.x,snake.y)
+
 class SNAKE:
 	def __init__(snake):
 		snake.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
@@ -39,6 +43,8 @@ class SNAKE:
 		snake.body_tl = pygame.image.load('Graphics/body_tl.png').convert_alpha()
 		snake.body_br = pygame.image.load('Graphics/body_br.png').convert_alpha()
 		snake.body_bl = pygame.image.load('Graphics/body_bl.png').convert_alpha()
+		snake.crunch_sound = pygame.mixer.Sound('Sound/crunch.wav')
+
 
 
 	def draw_snake(snake):
