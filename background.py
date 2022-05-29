@@ -167,16 +167,33 @@ clock =pygame.time.Clock()
 apple= pygame.image.load('Graphics/apple.png').convert_alpha()
 game_font = pygame.font.Font('Font/font.ttf',25)
 
+SCREEN_UPDATE = pygame.USEREVENT
+pygame.time.set_timer(SCREEN_UPDATE,150)
 main = MAIN()
 
 
 while True: 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit(
-            )
-            sys.exit()
-    screen.fill((100,215,70))
-    main.draw_elements()
-    pygame.display.update()
-    clock.tick(60)
+ for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			pygame.quit()
+			sys.exit()
+		if event.type == SCREEN_UPDATE:
+			main.update()
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_UP:
+				if main.snake.direction.y != 1:
+					main.snake.direction = Vector2(0,-1)
+			if event.key == pygame.K_RIGHT:
+				if main.snake.direction.x != -1:
+					main.snake.direction = Vector2(1,0)
+			if event.key == pygame.K_DOWN:
+				if main.snake.direction.y != -1:
+					main.snake.direction = Vector2(0,1)
+			if event.key == pygame.K_LEFT:
+				if main.snake.direction.x != 1:
+					main.snake.direction = Vector2(-1,0)
+
+		screen.fill((100,215,70))
+		main.draw_elements()
+		pygame.display.update()
+		clock.tick(60)
